@@ -83,11 +83,11 @@ def modifyHTML(soup: BeautifulSoup):
     soup_mod = modifyHighHTML(soup)
     soup_mod2 = modifyLowHTML(soup_mod)
 
-    with open(TEMPLATE, "w") as t:
+    with open(constants.TEMPLATE, "w") as t:
         t.write(str(soup_mod2))
 
-def generateReport(id: int, date: str):
-    env = Environment(loader=FileSystemLoader(CWD),
+def generateReport(report_n: int, id: int, date: str):
+    env = Environment(loader=FileSystemLoader(constants.CWD),
                       comment_start_string='{=', comment_end_string="=}")
     template_vars = {
         'v_id': id,
@@ -96,7 +96,7 @@ def generateReport(id: int, date: str):
     }
     page_css = CSS(string='@page { width: 135%; height: 135%; }')
 
-    template = env.get_template(TEMPLATE)
+    template = env.get_template(constants.TEMPLATE)
     rendered_string = template.render(template_vars)
     report_name = modifyReportName(id)
     HTML(string=rendered_string).write_pdf(
