@@ -5,8 +5,8 @@ from re import search
 CWD = getcwd()
 CWD_LINUX = CWD.replace("C:", "/mnt/c").replace("\\", "/")
 OUTPUT = "output"
-DOCX = "317301 KRUPA.docx"
-PDF = f"{OUTPUT}/317301 KRUPA.pdf"
+DOCX_TEMPLATE = "317301 KRUPA.docx"
+PDF_TEMPLATE = f"{OUTPUT}/317301 KRUPA.pdf"
 XLSX = f"data.xlsx"
 TEMPLATE = f"{OUTPUT}/template.html"
 REPORT = f"{OUTPUT}/report.pdf"
