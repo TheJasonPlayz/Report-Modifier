@@ -8,10 +8,13 @@ from subprocess import run
 from shutil import move
 
 # from constants import TEMPLATE_SPLIT, TEMPLATE_SPLIT_PAGES
-from constants import PDF, DOCX, TEMPLATE, CWD_LINUX, OUTPUT, PageNums
+from constants import PDF_TEMPLATE, DOCX_FILES, TEMPLATE, CWD_LINUX, OUTPUT
 
-def generate_template(pages: PageNums):
-    if not isfile(PDF):
-        convert(DOCX, PDF)
-    if not isfile(TEMPLATE) and pages == PageNums.Single:
-        run(["kali", "run", f'cd {CWD_LINUX}; pdf2htmlEX \"{PDF}\" {TEMPLATE}'], shell=True)
+def generate_template():
+    if not isfile(TEMPLATE):
+        run(["kali", "run", f'cd {CWD_LINUX}; pdf2htmlEX \"{PDF_TEMPLATE}\" {TEMPLATE}'], shell=True)
+        
+def convert_docx():
+    needed_files = [f for f in DOCX_FILES if isfile(f)]
+    for file in needed_files:
+        convert(file, f"{OUTPUT}/{file.split(".")[0]}.pdf")
