@@ -98,7 +98,7 @@ def generateReport(report_n: int, id: int, date: str):
 
     template = env.get_template(constants.TEMPLATE)
     rendered_string = template.render(template_vars)
-    report_name = modifyReportName(id)
+    report_name = modifyReportName(report_n)
     HTML(string=rendered_string).write_pdf(
         report_name, stylesheets=[page_css])
     return report_name
