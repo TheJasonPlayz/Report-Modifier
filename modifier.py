@@ -103,15 +103,24 @@ def generateReport(report_n: int, id: int, date: str):
         report_name, stylesheets=[page_css])
     return report_name
 
-(ids, dates) = getXSLXData()
 
-if gethostname() == "JASONS_COMPUTER":
-    generate_template(PageNums.Single)
+def main():
+    convert_docx()
+    
+    if gethostname() == "JASONS_COMPUTER":
+        generate_template()
+        
+    with open(constants.TEMPLATE, "r") as t:
+        soup = BeautifulSoup(t, constants.PARSER)
+        modifyHTML(soup)
 
-with open(TEMPLATE, "r") as t:
-    soup = BeautifulSoup(t, PARSER)
-    soup_mod = modifyHTML(soup)
 
-for id, date in zip(ids, dates):
-   r = generateReport(id, date)
-   cropLogo(r)
+    reload(constants)
+    for nested in getXSLXData():
+        report_n = nested[0]
+        id = nested[1]
+        date = nested[2]
+        r = generateReport(report_n, id, date)
+        cropLogo(r)
+        
+main()
