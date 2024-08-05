@@ -14,20 +14,9 @@ from template_generator import generate_template
 from id_finder import getXSLXData, convert_docx
 import constants
 
-def modifyReportName(id: int):
-    split = REPORT.split(".")
-    split[0] = split[0] + str(id) # type: ignore
-    return ".".join(split)
-
-def getXSLXData() -> Tuple[List[int], List[str]]:
-    xslx = pd.read_excel(XLSX)
-    ids = []
-    dates = []
-    for r in xslx["Serial #"]:
-        ids.append(r)
-    for r in xslx["Date"]:
-        dates.append(r)
-    return (ids, dates)
+def modifyReportName(report_n: str):
+    area = re.sub("/", ".", constants.ID_TO_AREA.get(str(report_n)))
+    return f"{constants.OUTPUT}/{report_n} {area}.pdf"
 
 def cropLogo(pdf_fn):
     output = PdfWriter()
