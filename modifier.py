@@ -2,17 +2,17 @@ from typing import List, Tuple
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML, CSS
 from bs4 import BeautifulSoup, Tag
-import pandas as pd
-from PyPDF2 import PdfReader, PdfWriter
+from pypdf import PdfReader, PdfWriter
 # from bs4.diagnose import diagnose
 
 import re
-from os import listdir
 from copy import copy
 from socket import gethostname
+from importlib import reload
 
 from template_generator import generate_template
-from constants import REPORT, XLSX, TEMPLATE, CWD, PARSER, PageNums
+from id_finder import getXSLXData, convert_docx
+import constants
 
 def modifyReportName(id: int):
     split = REPORT.split(".")
