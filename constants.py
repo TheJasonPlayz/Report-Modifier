@@ -13,5 +13,3 @@ METRICS = f"{OUTPUT}/metrics.txt"
 PARSER = "html5lib"
 DOCX_FILES = [f for f in listdir() if f.endswith(".docx")]
 ID_TO_AREA = dict([search(r"([0-9|a-zA-Z]+)?\s?([0-9|a-zA-Z]+)?", f).groups(2) for f in listdir(f"{OUTPUT}/") if f.endswith(".docx") or f.endswith(".pdf")])
-# IDS = [search(r"([0-9]+?)?\s?(?:[a-zA-Z]+?)?", f)[1] for f in listdir() if f.endswith(".pdf")]
-# AREAS = [search(r"(?:[0-9]+?)?\s?([a-zA-Z]+?)?", f)[1] for f in listdir() if f.endswith(".pdf")]
