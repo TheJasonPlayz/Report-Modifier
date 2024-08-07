@@ -16,21 +16,26 @@ def modifyReportName(report_n: str):
     area = re.sub("/", ".", constants.ID_TO_AREA.get(str(report_n)))
     return f"{constants.OUTPUT}/{report_n} {area}.pdf"
 
-def cropLogo(pdf_fn):
+def cropReport(pdf_fn):
     output = PdfWriter()
     input = PdfReader(pdf_fn)
     page = input.pages[0]
     page.mediabox.upper_left =  (
-        page.mediabox.left - 50,
-        page.mediabox.top - 50,
+        page.mediabox.left + 25,
+        page.mediabox.top - 75,
+    )
+    page.mediabox.upper_right = (
+        page.mediabox.right + 25,
+        page.mediabox.top,
     )
     output.add_page(page)
-    for i in range(len(input.pages)):  
+    for i in range(1, len(input.pages)):  
         page = input.pages[i]
         output.add_page(page)
     with open(pdf_fn, "wb") as pdf:
         output.write(pdf)
 
+ 
 def editTag(target: Tag, template_id: str) -> Tag:
     new_tag = copy(target)
     new_tag.attrs["id"] = "target"
@@ -103,8 +108,6 @@ def generateReport(report_n: int, id: int, date: str):
 
 
 def main():
-    convert_docx()
-    
     if gethostname() == "JASONS_COMPUTER":
         generate_template()
         
@@ -119,6 +122,6 @@ def main():
         id = nested[1]
         date = nested[2]
         r = generateReport(report_n, id, date)
-        cropLogo(r)
+        cropReport(r)
         
 main()
