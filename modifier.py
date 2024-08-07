@@ -24,10 +24,6 @@ def cropReport(pdf_fn):
         page.mediabox.left + 25,
         page.mediabox.top - 75,
     )
-    page.mediabox.upper_right = (
-        page.mediabox.right + 25,
-        page.mediabox.top,
-    )
     output.add_page(page)
     for i in range(1, len(input.pages)):  
         page = input.pages[i]
