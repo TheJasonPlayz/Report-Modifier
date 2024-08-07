@@ -1,5 +1,4 @@
 from os import getcwd, listdir
-from enum import Enum, auto
 from re import search
 
 CWD = getcwd()

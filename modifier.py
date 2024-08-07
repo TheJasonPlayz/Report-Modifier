@@ -1,9 +1,7 @@
-from typing import List, Tuple
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML, CSS
 from bs4 import BeautifulSoup, Tag
 from pypdf import PdfReader, PdfWriter
-# from bs4.diagnose import diagnose
 
 import re
 from copy import copy
@@ -11,7 +9,7 @@ from socket import gethostname
 from importlib import reload
 
 from template_generator import generate_template
-from id_finder import getXSLXData, convert_docx
+from id_finder import getXSLXData
 import constants
 
 def modifyReportName(report_n: str):

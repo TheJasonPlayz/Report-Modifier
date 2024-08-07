@@ -1,9 +1,4 @@
 import pandas as pd
-from docx2pdf import convert
-
-from os import listdir
-from os.path import isfile
-from re import search
 
 from constants import XLSX, XLSX_DATE, XLSX_REPORT, XLSX_SERIAL
 
