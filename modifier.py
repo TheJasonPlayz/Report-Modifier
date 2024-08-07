@@ -8,7 +8,7 @@ from copy import copy
 from socket import gethostname
 from importlib import reload
 
-from template_generator import generate_template, convert_docx
+from template_generator import generate_template
 from id_finder import getXSLXData
 import constants
 
