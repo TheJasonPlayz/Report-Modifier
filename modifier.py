@@ -16,24 +16,6 @@ def modifyReportName(report_n: int):
     area = sub("/", ".", constants.ID_TO_AREA.get(str(report_n)))
     return f"{constants.OUTPUT}/{report_n} {area}.pdf"
 
-def modifyReport(pdf_fn):
-    output = PdfWriter()
-    input = PdfReader(pdf_fn)
-    
-    first = input.pages[0]
-    first.mediabox.upper_left = (
-        first.mediabox.left + 25,
-        first.mediabox.top - 75,
-    )
-    output.add_page(first)
-    
-    for i in range(1, len(input.pages)):  
-        page = input.pages[i]
-        output.add_page(page)
-        
-    with open(pdf_fn, "wb") as pdf:
-        output.write(pdf)
-
 def generateReport(report_n: int, id: int, date: str):
     env = Environment(loader=FileSystemLoader(constants.CWD),
                       comment_start_string='{=', comment_end_string="=}")
@@ -61,7 +43,6 @@ def main():
         id = nested[1]
         date = nested[2]
         r = generateReport(report_n, id, date)
-        # modifyReport(r)
 
 reload(constants)
 main()
