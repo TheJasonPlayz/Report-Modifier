@@ -42,7 +42,7 @@ def generateReport(report_n: int, id: int, date: str):
         'h_date': date,
         'f_date': date,
     }
-    page_css = CSS(string='@page { width: 135%; height: 135%; }')
+    page_css = CSS(string='@page { width: 135%; height: 135%; margin-top: 0.5in; margin-bottom: 0.6in; margin-right: 0.6in; margin-left: 0.6in; }')
 
     template = env.get_template(constants.TEMPLATE)
     rendered_string = template.render(template_vars)
