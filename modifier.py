@@ -11,9 +11,9 @@ from importlib import reload
 from template_generator import generate_template
 from id_finder import getXSLXData
 import constants
-
-def modifyReportName(report_n: str):
-    area = re.sub("/", ".", constants.ID_TO_AREA.get(str(report_n)))
+            
+def modifyReportName(report_n: int):
+    area = sub("/", ".", constants.ID_TO_AREA.get(str(report_n)))
     return f"{constants.OUTPUT}/{report_n} {area}.pdf"
 
 def cropReport(pdf_fn):
