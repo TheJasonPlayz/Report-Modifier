@@ -55,18 +55,13 @@ def generateReport(report_n: int, id: int, date: str):
 def main():
     if gethostname() == "JASONS_COMPUTER":
         generate_template()
-        
-    with open(constants.TEMPLATE, "r") as t:
-        soup = BeautifulSoup(t, constants.PARSER)
-        modifyHTML(soup)
 
-
-    reload(constants)
     for nested in getXSLXData():
         report_n = nested[0]
         id = nested[1]
         date = nested[2]
         r = generateReport(report_n, id, date)
-        cropReport(r)
-        
+        # modifyReport(r)
+
+reload(constants)
 main()
