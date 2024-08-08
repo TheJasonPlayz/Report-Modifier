@@ -16,18 +16,21 @@ def modifyReportName(report_n: int):
     area = sub("/", ".", constants.ID_TO_AREA.get(str(report_n)))
     return f"{constants.OUTPUT}/{report_n} {area}.pdf"
 
-def cropReport(pdf_fn):
+def modifyReport(pdf_fn):
     output = PdfWriter()
     input = PdfReader(pdf_fn)
-    page = input.pages[0]
-    page.mediabox.upper_left =  (
-        page.mediabox.left + 25,
-        page.mediabox.top - 75,
+    
+    first = input.pages[0]
+    first.mediabox.upper_left = (
+        first.mediabox.left + 25,
+        first.mediabox.top - 75,
     )
-    output.add_page(page)
+    output.add_page(first)
+    
     for i in range(1, len(input.pages)):  
         page = input.pages[i]
         output.add_page(page)
+        
     with open(pdf_fn, "wb") as pdf:
         output.write(pdf)
 
