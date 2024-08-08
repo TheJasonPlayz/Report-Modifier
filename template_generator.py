@@ -73,5 +73,13 @@ def modify_template(soup: BeautifulSoup):
     
         
 def generate_template():
+    if not isfile(PDF_TEMPLATE):
+        convert(DOCX_FILES[0], PDF_TEMPLATE)
     if not isfile(TEMPLATE):
         run(["kali", "run", f'cd {CWD_LINUX}; pdf2htmlEX \"{PDF_TEMPLATE}\" {TEMPLATE}'], shell=True)
+        
+        with open(TEMPLATE, "r") as t:
+            soup = BeautifulSoup(t, PARSER)
+            modify_template(soup)
+            
+generate_template()
