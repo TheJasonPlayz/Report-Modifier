@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup, Tag
 from docx2pdf import convert
 
 from os.path import isfile
