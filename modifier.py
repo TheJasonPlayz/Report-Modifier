@@ -1,10 +1,10 @@
 from jinja2 import Environment, FileSystemLoader
+from pypdf import PdfWriter, PdfReader
 from weasyprint import HTML, CSS
-from bs4 import BeautifulSoup, Tag
-from pypdf import PdfReader, PdfWriter
+from docx2pdf import convert
 
-import re
-from copy import copy
+from os.path import isfile
+from re import sub
 from socket import gethostname
 from importlib import reload
 
