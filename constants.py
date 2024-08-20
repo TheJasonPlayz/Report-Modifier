@@ -16,3 +16,4 @@ ID_TO_AREA = dict([search(r"([0-9|a-zA-Z]+)?\s?([0-9|a-zA-Z]+)?", f).groups(2) f
 XLSX_SERIAL = "Serial #"
 XLSX_DATE = "Date"
 XLSX_REPORT = "Report #"
+CSS_STR = '@page { width: 135%; height: 135%; margin-top: 0.5in; margin-bottom: 0.6in; margin-right: 0.6in; margin-left: 0.6in; font-family: Arial }'

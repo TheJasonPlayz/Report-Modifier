@@ -30,7 +30,7 @@ def generateReport(report_n: int, id: int, date: str):
     rendered_string = template.render(template_vars)
     report_name = modifyReportName(report_n)
     HTML(string=rendered_string).write_pdf(
-        report_name, stylesheets=[page_css])
+        report_name, stylesheets=[CSS(string=constants.CSS_STR)])
     return report_name
 
 
